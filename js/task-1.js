@@ -1,26 +1,24 @@
-const user = {
-  name: 'Mango',
-  age: 20,
-  hobby: 'html',
-  premium: true,
+const Account = function ({ login, email}) {
+  this.login = login;
+  this.email = email;
 };
 
-user.mood = 'happy';
-user.hobby = 'skydiving';
-user.premium = false;
+Account.prototype.getInfo = function () {  
+  console.log(`Login: ${this.login}, Email: ${this.email}`);
+};
 
-// const keys = Object.entries(user);
+console.log(Account.prototype.getInfo); // function
 
-// for (const entry of keys) {
+const mango = new Account({
+  login: 'Mangozedog',
+  email: 'mango@dog.woof',
+});
 
-//   const key = entry[0];
-//   const value = entry[1];
+mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
 
-//   console.log(`${key} : ${value}`);
-// }
+const poly = new Account({
+  login: 'Poly',
+  email: 'poly@mail.com',
+});
 
-const userKeys = Object.keys(user);
-
-for (const key of userKeys) {
-  console.log(`${key}: ${user[key]}`);
-}
+poly.getInfo(); // Login: Poly, Email: poly@mail.com
